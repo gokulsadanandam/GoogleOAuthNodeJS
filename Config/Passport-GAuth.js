@@ -1,7 +1,7 @@
 var passport = require('passport'),
     strategy = require('passport-strategy'),
     googleStrategy = require('passport-google-oauth20').Strategy,
-    User = require('../model/user')
+    User = require('../Model/user')
 
 passport.serializeUser((user,cb)=>{
 	cb(null,user.id)
@@ -28,7 +28,7 @@ passport.use(new googleStrategy({
     }
     const NewUser = new User() 
     	  NewUser.userID = profile.id
-    const newuser = NewUser.save()
-
+    const newuser = await NewUser.save()
+    console.log(newuser)
     cb(null,newuser)
 }))
