@@ -12,8 +12,8 @@ passport.deserializeUser(function(obj, cb) {
 });
 
 passport.use(new facebookAuth({
-	clientID:'356860308217736',
-	clientSecret:'3616fed5633c096d5da5b0625b6ba593',
+	clientID:'APPID',
+	clientSecret:'APPKEY',
 	callbackURL:'https://localhost:443/auth/facebookcallback'
 }, async (accessToken,refreshToken,profile,cb)=>{
  	const existingUser = await User.findOne({'userID':profile.id})
